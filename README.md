@@ -1,9 +1,7 @@
 BallerCFG - a pretty cool configuration loader
 ==============================================
 
-![Build Status][1]]
-
-##About
+![Build Status][1]
 
 BallerCFG is a pretty cool configuration file loader which can deal with
 multiple formats/directories at the same time.
@@ -19,12 +17,12 @@ Please note that only Python3 is supported.
 ## Installation
 
 ```
-pip3 install -U https://github.com/kalmanolah/ballercfg.git
+pip3 install -U git+https://github.com/kalmanolah/ballercfg.git
 ```
 
 ## Usage
 
-```
+```python
 from ballercfg import ConfigurationManager
 
 
@@ -43,7 +41,7 @@ cfg = ConfigurationManager.load(['path/to/cfg/*', '/etc/app/cfg/*'])
 #
 #     config:
 #         db:
-#             username:  'db-user'
+#             user:  'db-user'
 #
 value = cfg.get('config.db.user')
 
