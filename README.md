@@ -1,9 +1,9 @@
-BallerCFG - a pretty cool configuration loader
+BallerCFG - a totally baller configuration loader
 ==============================================
 
 ![Build Status][1]
 
-BallerCFG is a pretty cool configuration file loader which can deal with
+BallerCFG is a totally baller configuration file loader which can deal with
 multiple formats/directories at the same time.
 
 Currently supported formats include:
@@ -44,6 +44,8 @@ cfg = ConfigurationManager.load(['path/to/cfg/*', '/etc/app/cfg/*'])
 #             user:  'db-user'
 #
 value = cfg.get('config.db.user')
+# or
+value = cfg.get('config.db')['user']
 
 # Grabbing data from your configuration files, with defaults
 value = cfg.get('config.db.user', 'default-user')
