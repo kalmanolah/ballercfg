@@ -1,6 +1,7 @@
 """This module contains the configuration manager."""
 import os
 import glob
+import itertools
 
 
 def instantiate(module_name, class_name, *args):
@@ -38,19 +39,19 @@ class ConfigurationManager:
         """
         # If the file doesn't exist, don't bother doing anything with it.
         if not os.path.isfile(path):
-            raise IOError('The file "%s" does not exist!' % path)
+            raise FileNotFoundError('The file "%s" does not exist!' % path)
 
         # Grab the extension from the path.
         extension = os.path.splitext(path)[1]
 
         if extension in ['', '.']:
-            raise Exception('A file without an extension can\'t be loaded!')
+            raise IOError('A file without an extension can\'t be loaded!')
 
         extension = extension[:0] + extension[(0+1):]
 
         # If the extension isn't mapped at all, throw an error.
         if not hasattr(ExtensionLoaders, extension):
-            raise Exception('A file with the extension "%s" can\'t be loaded!' % extension)
+            raise IOError('A file with the extension "%s" can\'t be loaded!' % extension)
 
         # Fetch loader data
         loader_data = getattr(ExtensionLoaders, extension)
@@ -67,12 +68,8 @@ class ConfigurationManager:
         if isinstance(paths, str):
             paths = [paths]
 
-        files = []
-        for path in paths:
-            files += glob.glob(path)
-
-        if not files:
-            raise Exception('No configuration files found')
+        files = [glob.glob(p) for p in paths]
+        files = list(itertools.chain.from_iterable(files))
 
         return MultiConfigurationFile(files)
 
@@ -84,6 +81,26 @@ class AbstractConfigurationFile:
     It handles loading of the configuration file and fetching the values of variables.
 
     """
+
+    @property
+    def path(self):
+        """Return the path to the configuration."""
+        return self._path
+
+    @path.setter
+    def path(self, value):
+        """Set the path to the configuration file."""
+        self._path = value
+
+    @property
+    def data(self):
+        """Return a dict containing configuration file data."""
+        return self._data
+
+    @data.setter
+    def data(self, value):
+        """Set a dict containing configuration file data."""
+        self._data = value
 
     def load(self, path):
         """Load a configuration file into this instance.

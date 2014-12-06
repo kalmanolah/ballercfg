@@ -11,7 +11,7 @@ def read(fname):
 
 setup(
     name='BallerCFG',
-    version='1.0.0',
+    version='1.0.1',
     description='BallerCFG - a totally baller configuration loader',
     long_description=read('README.md'),
     author='Kalman Olah',
