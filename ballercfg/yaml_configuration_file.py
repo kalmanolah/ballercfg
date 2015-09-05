@@ -5,7 +5,8 @@ from ballercfg import AbstractConfigurationFile
 
 class YamlConfigurationFile(AbstractConfigurationFile):
 
-    """This class is a gateway to the contents of a configuration file in YAML format.
+    """
+    This class exposes the contents of a configuration file in YAML format.
 
     It handles loading of the configuration file and fetching the values of variables.
 

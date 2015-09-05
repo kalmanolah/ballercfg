@@ -1,7 +1,5 @@
 BallerCFG - a totally baller configuration loader
-==============================================
-
-![Build Status][1]
+=================================================
 
 BallerCFG is a totally baller configuration file loader which can deal with
 multiple formats/directories at the same time.
@@ -26,28 +24,36 @@ pip3 install -U git+https://github.com/kalmanolah/ballercfg.git
 from ballercfg import ConfigurationManager
 
 
-# Load a single configuration file
+##
+## Load a single configuration file
+##
 cfg = ConfigurationManager.load('path/to/cfg/file.yaml')
 
-# Load multiple configuration files by masking
+##
+## Load multiple configuration files by masking
+##
 cfg = ConfigurationManager.load('path/to/cfg/*')
 
-# Load multiple directories, combined with masks
+##
+## Load multiple directories, combined with masks
+##
 cfg = ConfigurationManager.load(['path/to/cfg/*', '/etc/app/cfg/*'])
 
-
-# Grabbing data from your configuration files
-# Example YAML structure:
-#
-#     config:
-#         db:
-#             user:  'db-user'
-#
+##
+## Grabbing data from your configuration files
+## Example YAML structure:
+##
+##     config:
+##         db:
+##             user:  'db-user'
+##
 value = cfg.get('config.db.user')
 # or
 value = cfg.get('config.db')['user']
 
-# Grabbing data from your configuration files, with defaults
+##
+## Grabbing data from your configuration files, with defaults
+##
 value = cfg.get('config.db.user', 'default-user')
 ```
 
@@ -58,7 +64,7 @@ MIT license.
 ```
 The MIT License (MIT)
 
-Copyright (c) 2014 Kalman Olah
+Copyright (c) 2014-2015 Kalman Olah
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -78,5 +84,3 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
-
-[1]: https://jenkins.kal.mn/buildStatus/icon?job=ballercfg

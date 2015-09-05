@@ -5,7 +5,8 @@ from ballercfg import AbstractConfigurationFile
 
 class JsonConfigurationFile(AbstractConfigurationFile):
 
-    """This class is a gateway to the contents of a configuration file in JSON format.
+    """
+    This class exposes the contents of a configuration file in JSON format.
 
     It handles loading of the configuration file and fetching the values of variables.
 

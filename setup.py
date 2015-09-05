@@ -11,7 +11,7 @@ def read(fname):
 
 setup(
     name='BallerCFG',
-    version='1.0.1',
+    version='1.0.2',
     description='BallerCFG - a totally baller configuration loader',
     long_description=read('README.md'),
     author='Kalman Olah',
@@ -23,6 +23,15 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
     ],
+    entry_points={
+        'ballercfg.extension_loaders': [
+            'yaml = ballercfg.yaml_configuration_file:YamlConfigurationFile',
+            'yml = ballercfg.yaml_configuration_file:YamlConfigurationFile',
+            'json = ballercfg.json_configuration_file:JsonConfigurationFile',
+            'ini = ballercfg.ini_configuration_file:IniConfigurationFile',
+            'cfg = ballercfg.yaml_configuration_file:IniConfigurationFile',
+        ]
+    },
     packages=find_packages(),
     include_package_data=True,
     install_requires=[

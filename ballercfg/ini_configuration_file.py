@@ -5,7 +5,8 @@ from ballercfg import AbstractConfigurationFile
 
 class IniConfigurationFile(AbstractConfigurationFile):
 
-    """This class is a gateway to the contents of a configuration file in INI/CFG format.
+    """
+    This class exposes the contents of a configuration file in INI/CFG format.
 
     It handles loading of the configuration file and fetching the values of variables.
 
